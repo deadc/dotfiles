@@ -31,10 +31,16 @@ bspc config urgent_border_color 		"${BSPWM_COLORS_URGENT_BORDER}"
 bspc rule -a bar state=locked follow=on sticky=on
 
 m=1
-for monitor in $(bspc query -M) ; do
-	bspc monitor ${monitor} -n $m -d $m/{a..e}
-	let m++
-done
+monitors=$(bspc query -M)
+
+if [ $(echo $monitors | wc -l) == 1 ] ; then
+  bspc monitor ${monitor} -n $m -d $m/{a..j}
+else
+  for monitor in ${monitors} ; do
+    bspc monitor ${monitor} -n $m -d $m/{a..e}
+    let m++
+  done
+fi
 
 if [ -e "$BSPWM_STATE" ] ; then
 	bspc wm -l "$BSPWM_STATE"
