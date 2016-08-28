@@ -1,0 +1,8 @@
+#!/usr/bin/dash
+
+. $HOME/.bin/colr
+
+while :; do
+	sleep 1
+	echo "%{c}$(date +"%I:%M %p")"
+done | lemonbar -p -f Roboto:size=10 -B "#$bg" -F "#$fg"

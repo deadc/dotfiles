@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+# Lemonbar script
+
+. $HOME/.bin/monitsize
+. $HOME/.bin/xparse
+
+FONT=${LEMONBAR_FONT1}
+ICONS=${LEMONBAR_FONT2}
+
+BG=${LEMONBAR_BACKGROUND}
+FG=${LEMONBAR_FOREGROUND}
+
+TEXT_COLOR=${LEMONBAR_TEXT_COLOR}
+TEXT_LIGHT=${LEMONBAR_TEXT_LIGHT}
+
+getTime(){
+  echo "%{F$TEXT_LIGHT} %{F$TEXT_COLOR}$(date +"%I:%M")"
+}
+
+getBatt(){
+  CELL="BAT1"
+
+  BPERC=$(sed 's/%//' /sys/class/power_supply/${CELL}/capacity)
+  BSTAT=$(sed 's/%//' /sys/class/power_supply/${CELL}/status)
+
+  if [ ${BSTAT} == "Discharging" ] ; then
+     printf "%%{F$TEXT_LIGHT}%3.d%%" ${BPERC}
+  else
+     printf "%%{F$TEXT_COLOR}%3.d%%" ${BPERC}
+  fi
+}
+
+getDesktop(){
+  for i in $(bspc query -D); do
+    if [ $i = $(bspc query -D -d) ]; then
+      echo %{F$TEXT_LIGHT}+
+    else
+      echo %{F$TEXT_COLOR}+
+    fi
+  done
+}
+
+killall lemonbar
+
+sleep .25
+for SIZE in $(_monitSize) ; do
+  while true; do
+    echo %{l}" "$(getDesktop)%{r} " | "$(getBatt)" |"$(getTime)" "
+    sleep .1
+  done | lemonbar -F ${FG} -B ${BG} -g ${SIZE} -f ${FONT} -f ${ICONS} -d -p | sh &
+done

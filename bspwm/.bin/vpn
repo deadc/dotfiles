@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [[ $(systemctl status openvpn@US_Midwest | grep inactive) = "" ]]; then #Active
+	echo '\uf023'
+else
+	echo ''
+fi
+

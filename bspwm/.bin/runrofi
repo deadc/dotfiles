@@ -1,0 +1,12 @@
+#!/bin/sh
+
+. $HOME/.bin/colr
+if [[ $(hostname) = "globtop" ]]; then
+	font="RobotoMono 12"
+	padding="5"
+else
+	font="Lemon 8"
+	padding="2"
+fi
+
+rofi -show run -m -1 -padding "$padding" -color-window "#$bg, #$fg, #$fg" -color-normal "#$bg, #$fg, #$bg, #$fg, #$bg" -color-active "#$bg, #$red, #$red, #$bg" -location 0 -font "$font" -bc "#$wht" -bw 2 -opacity 90

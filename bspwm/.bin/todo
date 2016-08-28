@@ -1,0 +1,22 @@
+#!/bin/sh
+. $HOME/.bin/colr
+selection=$(cat ~/.todo | dmenu -fn 'lemon-8' -sf "#$blk" -sb "#$cyn" -w 920 -x 500 -y 400 -h 25 -l 5 -p "Todo:")
+
+
+set -f
+IFS='
+'
+
+for line in $(cat ~/.todo)
+do
+	if [[ $line = $selection ]]; then
+		sed -i "/$selection/d" ~/.todo
+		echo $selection
+		exit
+	fi
+
+done
+unset IFS
+set +f
+echo $selection >> ~/.todo
+exit

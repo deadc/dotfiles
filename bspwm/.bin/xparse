@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+#
+
+BUF=$( xrdb -query )
+
+# Special
+BG_COLOR=$( echo "${BUF}" | sed -n 's/*background:.*\(#.*\)/\1/p' )
+FG_COLOR=$( echo "${BUF}" | sed -n 's/*foreground:.*\(#.*\)/\1/p' )
+
+# Black
+A_BLACK=$( echo "${BUF}" | sed -n 's/*color0:.*\(#.*\)/\1/p' )
+B_BLACK=$( echo "${BUF}" | sed -n 's/*color8:.*\(#.*\)/\1/p' )
+
+# Red
+A_RED=$( echo "${BUF}" | sed -n 's/*color1:.*\(#.*\)/\1/p' )
+B_RED=$( echo "${BUF}" | sed -n 's/*color9:.*\(#.*\)/\1/p' )
+
+# Green
+A_GREEN=$( echo "${BUF}" | sed -n 's/*color2:.*\(#.*\)/\1/p' )
+B_GREEN=$( echo "${BUF}" | sed -n 's/*color10:.*\(#.*\)/\1/p' )
+
+# Yellow
+A_YELLOW=$( echo "${BUF}" | sed -n 's/*color3:.*\(#.*\)/\1/p' )
+B_YELLOW=$( echo "${BUF}" | sed -n 's/*color11:.*\(#.*\)/\1/p' )
+
+# Blue
+A_BLUE=$( echo "${BUF}" | sed -n 's/*color4:.*\(#.*\)/\1/p' )
+B_BLUE=$( echo "${BUF}" | sed -n 's/*color12:.*\(#.*\)/\1/p' )
+
+# Magenta
+A_MAGENTA=$( echo "${BUF}" | sed -n 's/*color5:.*\(#.*\)/\1/p' )
+B_MAGENTA=$( echo "${BUF}" | sed -n 's/*color13:.*\(#.*\)/\1/p' )
+
+# Cyan
+A_CYAN=$( echo "${BUF}" | sed -n 's/*color6:.*\(#.*\)/\1/p' )
+B_CYAN=$( echo "${BUF}" | sed -n 's/*color14:.*\(#.*\)/\1/p' )
+
+# White
+A_WHITE=$( echo "${BUF}" | sed -n 's/*color7:.*\(#.*\)/\1/p' )
+B_WHITE=$( echo "${BUF}" | sed -n 's/*color15:.*\(#.*\)/\1/p' )
+
+# BSPWM
+eval $( echo "${BUF}" | grep 'Bspwm' | sed 's/\./_/g;s/\(.*\):\t/\U\1=/g' )
+
+# LEMONBAR
+eval $( echo "${BUF}" | grep 'Lemonbar' | sed 's/\./_/g;s/\(.*\):\t/\U\1=/g' )
+
+# DMENU
+eval $( echo "${BUF}" | grep 'Dmenu' | sed 's/\./_/g;s/\(.*\):\t/\U\1=/g' )

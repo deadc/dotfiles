@@ -1,0 +1,9 @@
+#!/bin/sh
+
+. $HOME/.bin/monitsize
+. $HOME/.bin/xparse
+
+_monitSize $(bspc query -M -d) > /dev/null
+
+# using Y*2 because dmenu doesnt respect x+y like lemonbar
+dmenu_run -fn "${DMENU_FONT}" -sf "${DMENU_COLORS_FOREGROUND}" -sb "${DMENU_COLORS_BACKGROUND}" -w ${WIDTH} -h ${HEIGHT} -x ${Y} -y ${Y} -l 0 -p "${DMENU_PRE}"

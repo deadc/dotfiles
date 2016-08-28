@@ -1,0 +1,42 @@
+#!/bin/bash
+
+. $HOME/.bin/xparse
+
+bspc config border_width 			${BSPWM_BORDER_WIDTH}
+bspc config window_gap 				${BSPWM_WINDOW_GAP}
+bspc config top_padding 			${BSPWM_TOP_PADDING}
+bspc config bottom_padding 			${BSPWM_BOTTOM_PADDING}
+bspc config left_padding 			${BSPWM_LEFT_PADDING}
+bspc config right_padding 			${BSPWM_RIGHT_PADDING}
+
+bspc config split_ratio           		${BSPWM_SPLIT_RATIO}
+bspc config borderless_monocle    		${BSPWM_BORDERLESS_MONOCLE}
+bspc config gapless_monocle       		${BSPWM_GAPLESS_MONOCLE}
+bspc config focus_follows_pointer 		${BSPWM_FOCUS_FOLLOWS_POINTER}
+bspc config auto_alternate        		${BSPWM_AUTO_ALTERNATE}
+bspc config auto_cancel           		${BSPWM_AUTO_CANCEL}
+
+bspc config focused_border_color  		"${BSPWM_COLORS_FOCUSED_BORDER}"
+bspc config active_border_color   		"${BSPWM_COLORS_ACTIVE_BORDER}"
+bspc config normal_border_color   		"${BSPWM_COLORS_NORMAL_BORDER}"
+bspc config normal_locked_border_color 		"${BSPWM_COLORS_NORMAL_LOCKED_BORDER}"
+bspc config focused_sticky_border_color		"${BSPWM_COLORS_FOCUSED_STICKY_BORDER}"
+bspc config active_sticky_border_color 		"${BSPWM_COLORS_ACTIVE_STICKY_BORDER}"
+bspc config normal_sticky_border_color 		"${BSPWM_COLORS_NORMAL_STICKY_BORDER}"
+bspc config focused_private_border_color 	"${BSPWM_COLORS_FOCUSED_PRIVATE_BORDER}"
+bspc config active_private_border_color 	"${BSPWM_COLORS_ACTIVE_PRIVATE_BORDER}"
+bspc config normal_private_border_color 	"${BSPWM_COLORS_NORMAL_PRIVATE_BORDER}"
+bspc config urgent_border_color 		"${BSPWM_COLORS_URGENT_BORDER}"
+
+bspc rule -a bar state=locked follow=on sticky=on
+
+m=1
+for monitor in $(bspc query -M) ; do
+	bspc monitor ${monitor} -n $m -d $m/{a..e}
+	let m++
+done
+
+if [ -e "$BSPWM_STATE" ] ; then
+	bspc wm -l "$BSPWM_STATE"
+	rm "$BSPWM_STATE"
+fi

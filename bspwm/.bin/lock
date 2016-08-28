@@ -1,0 +1,8 @@
+#!/bin/sh
+#sleep 1
+ss=/tmp/ss.png
+sleep 1
+scrot "$ss"
+#convert -blur 0x8 "$ss" "$ss"
+convert -scale 10% -scale 1000% "$ss" "$ss"
+i3lock -u -i "$ss"

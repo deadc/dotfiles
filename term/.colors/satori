@@ -1,0 +1,39 @@
+! satori
+
+! special
+#define   fg_color     #839496
+#define   bg_color     #09090d
+#define   cc_color     #839496
+
+! Black
+#define   a_black      #353540
+#define   b_black      #545466
+
+! Red
+#define   a_red        #8c5760
+#define   b_red        #b26f7a
+
+! Green
+#define   a_green      #7b8c58
+#define   b_green      #9db270
+
+! Yellow
+#define   a_yellow     #8c6e43
+#define   b_yellow     #b28c55
+
+! Blue
+#define   a_blue       #58698c
+#define   b_blue       #7086b2
+
+! Magenta
+#define   a_magenta    #7b5e7d
+#define   b_magenta    #9c77b2
+
+! Cyan
+#define   a_cyan       #66808c
+#define   b_cyan       #82a2b2
+
+! White
+#define   a_white      #8c8b8b
+#define   b_white      #b8b8c8
+

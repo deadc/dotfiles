@@ -1,0 +1,21 @@
+#!/usr/bin/python
+
+import subprocess
+
+lines = subprocess.getoutput('tmux list-sessions').split('\n')
+sessions = []
+for line in lines:
+    new = ''
+    for character in line:
+        if character == ':':
+            sessions.append(new)
+            break
+        else:
+            new += character
+out = ''
+for session in sessions:
+    if session != sessions[len(sessions) - 1]:
+        out += session + '\n'
+    else:
+        out += session
+print(out)

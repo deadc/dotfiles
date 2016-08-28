@@ -1,0 +1,6 @@
+#!/bin/sh
+pkill compton
+if [[ "$1" = "start" ]]; then
+	compton --config ~/.config/compton/config -b
+fi
+

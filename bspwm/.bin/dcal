@@ -1,0 +1,18 @@
+#!/bin/bash
+
+. $HOME/.bin/colr
+
+TODAY=$(expr `date +'%d'` + 0)
+MONTH=`date +'%m'`
+YEAR=`date +'%Y'`
+
+(echo
+# current month, hilight header and today
+cal | sed -re "s/^(.*[A-Za-z][A-Za-z]*.*)$/^fg(#$red)\1^fg()/;s/(^|[ ])($TODAY)($|[ ])/\1^fg(#$red)\2^fg()\3/"
+
+# next month, hilight header
+[ $MONTH -eq 12 ] && YEAR=`expr $YEAR + 1`
+cal `expr \( $MONTH + 1 \) % 12` $YEAR \
+    | sed -e "s/^\(.*[A-Za-z][A-Za-z]*.*\)$/\1/"
+) | dzen2 -p -bg "#$bg" -fg "#$fg" -fn "lemon:pixelsize=9" -x 1760 -y 40 -w 150 -l 7 -sa c -e 'onstart=uncollapse;button1=exit;button3=exit' -title-name 'dzen-popup-cal'
+

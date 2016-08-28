@@ -1,0 +1,10 @@
+#!/bin/bash
+while :; do
+	time=`ping -c1 8.8.4.4 2>&1 | grep time | head -n1 | tr "=" "\n" | tail -n1`
+	if [[ "$time" = "connect" || "$time" = "" ]]; then
+	        echo "%Nerr" > /tmp/barfifo
+	else
+		echo "%N$time" > /tmp/barfifo
+	fi
+	sleep 5
+done

@@ -1,0 +1,101 @@
+#include ".colors/satori"
+
+! Bspwm
+Bspwm.border_width:                   1
+Bspwm.window_gap:                     8
+Bspwm.top_padding:                    28
+Bspwm.bottom_padding:                 0
+Bspwm.left_padding:                   0
+Bspwm.right_padding:                  0
+
+Bspwm.split_ratio:                    0.5
+Bspwm.borderless_monocle:             true
+Bspwm.gapless_monocle:                true
+Bspwm.focus_follows_pointer:          true
+Bspwm.auto_alternate:                 true
+Bspwm.auto_cancel:                    true
+
+Bspwm.colors.focused_border:          b_magenta
+Bspwm.colors.active_border:           b_black
+Bspwm.colors.normal_border:           b_black
+Bspwm.colors.normal_locked_border:    fg_color
+Bspwm.colors.focused_sticky_border:   a_red
+Bspwm.colors.active_sticky_border:    a_cyan
+Bspwm.colors.normal_sticky_border:    a_red
+
+Bspwm.colors.focused_private_border:  #cc99cc
+Bspwm.colors.normal_private_border:   #cc99cc
+Bspwm.colors.active_private_border:   #cc99cc
+Bspwm.colors.urgent_border:           #f2777a
+
+! Lemonbar
+Lemonbar.font1:                       termsyn:size=7:hinting=true:antialias=false
+Lemonbar.font2:                       fontawesome:size=8
+
+Lemonbar.text.color:                  fg_color
+Lemonbar.text.light:                  a_blue
+
+Lemonbar.foreground:                  fg_color
+Lemonbar.background:                  bg_color
+
+! Dmenu
+Dmenu.colors.foreground:              fg_color
+Dmenu.colors.background:              bg_color
+
+Dmenu.font:                           termsyn:size=7:hinting=true:antialias=false
+Dmenu.pre:                            "Run >"
+
+! URxvt
+URxvt*font:                           xft:termsyn:size=7:hinting=true:antialias=false
+URxvt*boldFont:                       xft:termsyn:size=7:style=bold:hinting=true:antialias=false
+URxvt*italicFont:                     xft:termsyn:size=7:style=italic:hinting=true:antialias=false
+URxvt*boldItalicFont:                 xft:termsyn:size=7:style=bolditalic:hinting=true:antialias=false
+
+URxvt.geometry:                       80x14
+URxvt.internalBorder:                 5
+URxvt.scrollBar:                      none
+URxvt.letterSpace:                    0
+URxvt.iso14755:                       False
+URxvt.keysym.Shift-Control-C:         perl:clipboard:copy
+URxvt.keysym.Shift-Control-V:         perl:clipboard:paste
+URxvt.perl-ext-common:                default,matcher,clipboard,vtwheel
+URxvt.url-launcher:                   /usr/bin/xdg-open
+URxvt.matcher.button:                 1
+
+! Colors
+*background:                          bg_color
+*foreground:                          fg_color
+*cursorColor:                         cc_color
+
+! black
+*color0:                              a_black
+*color8:                              b_black
+
+! red
+*color1:                              a_red
+*color9:                              b_red
+
+! green
+*color2:                              a_green
+*color10:                             b_green
+
+! yellow
+*color3:                              a_yellow
+*color11:                             b_yellow
+
+! blue
+*color4:                              a_blue
+*color12:                             b_blue
+
+! magenta
+*color5:                              a_magenta
+*color13:                             b_magenta
+
+! cyan
+*color6:                              a_cyan
+*color14:                             b_cyan
+
+! white
+*color7:                              a_white
+*color15:                             b_white
+
