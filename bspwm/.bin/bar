@@ -18,10 +18,8 @@ getTime(){
 }
 
 getBatt(){
-  CELL="BAT1"
-
-  BPERC=$(sed 's/%//' /sys/class/power_supply/${CELL}/capacity)
-  BSTAT=$(sed 's/%//' /sys/class/power_supply/${CELL}/status)
+  BPERC=$(sed 's/%//' /sys/class/power_supply/BAT[0-6]/capacity)
+  BSTAT=$(sed 's/%//' /sys/class/power_supply/BAT[0-6]/status)
 
   if [ ${BSTAT} == "Discharging" ] ; then
      printf "%%{F$TEXT_LIGHT}%3.d%%" ${BPERC}
