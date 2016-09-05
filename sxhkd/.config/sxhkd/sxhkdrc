@@ -33,6 +33,9 @@ super + {_,shift} + q
 super + m
   bspc node -s biggest
 
+super + {grave, Tab}
+  bspc {node,desktop} -f last
+
 super + {_,shift} + Tab
   bspc node -f {prev, next}
 
