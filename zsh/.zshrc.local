@@ -1,5 +1,5 @@
 # add $HOME/.bin to $PATH
-export PATH=$HOME/.bin:$HOME/.gem/ruby/2.3.0/bin:$PATH
+export PATH=$HOME/.bin:$HOME/.gem/ruby/2.3.0/bin:$HOME/.rbenv/bin:$PATH
 
 zstyle ':vcs_info:*' actionformats "(%b|%a) " "zsh: %r"
 zstyle ':vcs_info:*' formats       "%{$fg[cyan]%}(%{$reset_color%}%b%{$fg[cyan]%})%{$reset_color%} "    "zsh: %r"
@@ -53,6 +53,10 @@ ssh-agent () {
 }
 
 ssh-agent
+
+if [ -d $HOME/.rbenv ] ; then
+  eval "$(rbenv init -)"
+fi
 
 # Automatic startx
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
