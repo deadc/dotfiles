@@ -58,5 +58,8 @@ if [ -d $HOME/.rbenv ] ; then
   eval "$(rbenv init -)"
 fi
 
+# disable annoying pc speaker
+xset -b
+
 # Automatic startx
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
