@@ -16,6 +16,8 @@ zstyle ':prompt:grml:*:items:user' pre '%F{blue}'
 zstyle ':prompt:grml:*:items:path' token ' %40<..<%~%<< '
 zstyle ':prompt:grml:*:items:path' pre '%F{yellow}'
 
+zstyle ':prompt:grml:*:items:percent' token '%% %F{reset_color}'
+
 zstyle ':prompt:grml:left:setup' items host at user path vcs percent
 zstyle ':prompt:grml:right:setup' items sad-smiley
 
