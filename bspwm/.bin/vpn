@@ -1,8 +1,5 @@
 #!/bin/sh
 
-if [[ $(systemctl status openvpn@US_Midwest | grep inactive) = "" ]]; then #Active
-	echo '\uf023'
-else
-	echo ''
-fi
+CONFIG=/etc/openvpn/${1}.conf
+sudo nohup /usr/bin/openvpn ${CONFIG} &> /tmp/${1}-vpn.log &
 

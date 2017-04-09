@@ -1,27 +1,28 @@
 #!/bin/sh
 
 graphics() {
-	xrandr --auto --output HDMI1 
-	xrandr --auto --output eDP1 
+  xrandr --auto --output HDMI1
+  xrandr --auto --output eDP1
+  xrandr --auto --output VGA1
 
-	xrdb -load ~/.Xresources
+  xrdb -load ~/.Xresources
 
-	hsetroot -solid "#1d1d1d"
-	xsetroot -cursor_name left_ptr
+  hsetroot -solid "#1d1d1d"
+  xsetroot -cursor_name left_ptr
 }
 
 env() {
-	cm start
-	sxhkd -c ~/.config/sxhkd/sxhkdrc &
-	start-pulseaudio-x11
-	urxvtd -q -f -o 
+  cm start
+  sxhkd -c ~/.config/sxhkd/sxhkdrc &
+  start-pulseaudio-x11
+  urxvtd -q -f -o
 }
 run() {
-	setwp
-	bar &
-	exec bsp
-
+  setwp
+  bar &
+  exec bsp
 }
 graphics
 env
 run
+urxvt

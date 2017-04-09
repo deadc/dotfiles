@@ -1,5 +1,7 @@
 #include ".colors/satori"
 
+#define normal xft:DejaVu Sans Mono:style=Book:size=8:antialias=true,xft:IPAGothic:style=Regular:antialias=true
+
 ! Bspwm
 Bspwm.border_width:                   1
 Bspwm.window_gap:                     8
@@ -46,10 +48,16 @@ Dmenu.font:                           termsyn:size=7:hinting=true:antialias=fals
 Dmenu.pre:                            "Run >"
 
 ! URxvt
-URxvt*font:                           xft:termsyn:size=7:hinting=true:antialias=false
-URxvt*boldFont:                       xft:termsyn:size=7:style=bold:hinting=true:antialias=false
-URxvt*italicFont:                     xft:termsyn:size=7:style=italic:hinting=true:antialias=false
-URxvt*boldItalicFont:                 xft:termsyn:size=7:style=bolditalic:hinting=true:antialias=false
+!URxvt*font:                           xft:termsyn:size=7:hinting=true:antialias=false
+!URxvt*boldFont:                       xft:termsyn:size=7:style=bold:hinting=true:antialias=false
+!URxvt*italicFont:                     xft:termsyn:size=7:style=italic:hinting=true:antialias=false
+!URxvt*boldItalicFont:                 xft:termsyn:size=7:style=bolditalic:hinting=true:antialias=false
+
+
+URxvt*font:                           normal
+URxvt*boldFont:                       normal
+URxvt*italicFont:                     normal
+URxvt*boldItalicFont:                 normal
 
 URxvt.geometry:                       80x14
 URxvt.internalBorder:                 5
