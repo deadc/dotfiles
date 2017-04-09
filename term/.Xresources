@@ -31,8 +31,8 @@ Bspwm.colors.active_private_border:   #cc99cc
 Bspwm.colors.urgent_border:           #f2777a
 
 ! Lemonbar
-Lemonbar.font1:                       termsyn:size=7:hinting=true:antialias=false
-Lemonbar.font2:                       fontawesome:size=8
+Lemonbar.font1:                       "-gohu-gohufont-medium-r-normal--11-80-100-100-c-60-iso8859-1"
+Lemonbar.font2:                       "-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1"
 
 Lemonbar.text.color:                  fg_color
 Lemonbar.text.light:                  a_blue
@@ -44,20 +44,20 @@ Lemonbar.background:                  bg_color
 Dmenu.colors.foreground:              fg_color
 Dmenu.colors.background:              bg_color
 
-Dmenu.font:                           termsyn:size=7:hinting=true:antialias=false
+Dmenu.font:                           "-gohu-gohufont-medium-r-normal--11-80-100-100-c-60-iso8859-1"
 Dmenu.pre:                            "Run >"
 
 ! URxvt
-!URxvt*font:                           xft:termsyn:size=7:hinting=true:antialias=false
-!URxvt*boldFont:                       xft:termsyn:size=7:style=bold:hinting=true:antialias=false
-!URxvt*italicFont:                     xft:termsyn:size=7:style=italic:hinting=true:antialias=false
-!URxvt*boldItalicFont:                 xft:termsyn:size=7:style=bolditalic:hinting=true:antialias=false
+URxvt*font:                           xft:Gohu GohuFont:size=8:antialias=true:hinting=true
+URxvt*boldFont:                       xft:Gohu GohuFont:size=8:style=bold:antialias=true:hinting=true
+URxvt*italicFont:                     xft:Gohu GohuFont:size=8:style=italic:antialias=true:hinting=true
+URxvt*boldItalicFont:                 xft:Gohu GohuFont:size=8:style=bolditalic:antialias=true:hinting=true
 
 
-URxvt*font:                           normal
-URxvt*boldFont:                       normal
-URxvt*italicFont:                     normal
-URxvt*boldItalicFont:                 normal
+!URxvt*font:                           normal
+!URxvt*boldFont:                       normal
+!URxvt*italicFont:                     normal
+!URxvt*boldItalicFont:                 normal
 
 URxvt.geometry:                       80x14
 URxvt.internalBorder:                 5

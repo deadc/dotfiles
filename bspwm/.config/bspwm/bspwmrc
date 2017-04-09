@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 . $HOME/.bin/xparse
 
@@ -32,17 +32,15 @@ bspc rule -a bar state=locked follow=on sticky=on
 
 m=1
 monitors=$(bspc query -M)
+num_monitors=$( echo ${monitors} | wc -l )
 
-if [ $(echo $monitors | wc -l) == 1 ] ; then
-  bspc monitor ${monitor} -n $m -d $m/{a..j}
-else
-  for monitor in ${monitors} ; do
-    bspc monitor ${monitor} -n $m -d $m/{a..e}
-    let m++
-  done
-fi
+for monitor in $( echo ${monitors} ) ; do
+  bspc monitor ${monitor} -n $m -d $m/{1..$( echo 10/${num_monitors} | bc )}
+  let m++
+done
+
 
 if [ -e "$BSPWM_STATE" ] ; then
-	bspc wm -l "$BSPWM_STATE"
-	rm "$BSPWM_STATE"
+  bspc wm -l "$BSPWM_STATE"
+  rm "$BSPWM_STATE"
 fi
