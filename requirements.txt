@@ -3,6 +3,8 @@ dmenu-ee-git
 sxhkd
 termite
 gohufont
+ttf-fira-mono
+dina-font
 ttf-material-design-icons
 ttf-unifont
 compton

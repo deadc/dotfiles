@@ -32,7 +32,7 @@ font-2                        = unifont:size=12;1
 
 modules-left                  = bspwm
 modules-center                = xwindow
-modules-right                 = music volume battery filesystem cpu memory temperature date powermenu
+modules-right                 = music volume filesystem cpu memory temperature battery date powermenu
 
 tray-position                 = right
 tray-padding                  = 1
@@ -165,25 +165,11 @@ battery                       = BAT0
 adapter                       = ADP1
 full-at                       = 98
 
-format-charging               = <animation-charging> <label-charging>
+format-charging               = <label-charging>
+format-discharging            = <label-discharging>
 
-format-discharging            = <ramp-capacity> <label-discharging>
-
-format-full-prefix            = ""
-
-ramp-capacity-0               = ""
-ramp-capacity-1               = ""
-ramp-capacity-2               = ""
-ramp-capacity-3               = ""
-ramp-capacity-4               = ""
-
-animation-charging-0          = ""
-animation-charging-1          = ""
-animation-charging-2          = ""
-animation-charging-3          = ""
-animation-charging-4          = ""
-
-animation-charging-framerate  = 750
+label-charging                = " %percentage%%"
+label-discharging             = " %percentage%%"
 
 [module/temperature]
 type                          = internal/temperature
