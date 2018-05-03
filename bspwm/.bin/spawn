@@ -1,7 +1,0 @@
-#!/bin/sh
-
-choice=$(sessions | menu)
-if [[ choice = "" ]]; then
-	exit
-fi
-urxvt -e tmux attach -t $choice &

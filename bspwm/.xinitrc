@@ -1,28 +1,20 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 graphics() {
-  xrandr --auto --output HDMI1
-  xrandr --auto --output eDP1
-  xrandr --auto --output VGA1
-
-  xrdb -load ~/.Xresources
-
-  hsetroot -solid "#1d1d1d"
-  xsetroot -cursor_name left_ptr
+  xr
 }
 
 env() {
-  cm start
-  sxhkd -c ~/.config/sxhkd/sxhkdrc &
-  start-pulseaudio-x11
-  urxvtd -q -f -o
+  cm 
+  sx
 }
+
 run() {
-  setwp
-  bar &
+  wp
+  pb
   exec bsp
 }
+
 graphics
 env
 run
-urxvt

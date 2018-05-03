@@ -1,35 +1,48 @@
 #!/bin/zsh
 
-. $HOME/.bin/xparse
+bspc config border_width                      1
+bspc config window_gap                        20
+bspc config top_padding                       40
+bspc config bottom_padding                    0
+bspc config left_padding                      0
+bspc config right_padding                     0
 
-bspc config border_width 			${BSPWM_BORDER_WIDTH}
-bspc config window_gap 				${BSPWM_WINDOW_GAP}
-bspc config top_padding 			${BSPWM_TOP_PADDING}
-bspc config bottom_padding 			${BSPWM_BOTTOM_PADDING}
-bspc config left_padding 			${BSPWM_LEFT_PADDING}
-bspc config right_padding 			${BSPWM_RIGHT_PADDING}
+bspc config split_ratio                       0.52
+bspc config borderless_monocle                true
+bspc config gapless_monocle                   true
+bspc config focus_follows_pointer             true
+bspc config auto_alternate                    true
+bspc config auto_cancel                       true
 
-bspc config split_ratio           		${BSPWM_SPLIT_RATIO}
-bspc config borderless_monocle    		${BSPWM_BORDERLESS_MONOCLE}
-bspc config gapless_monocle       		${BSPWM_GAPLESS_MONOCLE}
-bspc config focus_follows_pointer 		${BSPWM_FOCUS_FOLLOWS_POINTER}
-bspc config auto_alternate        		${BSPWM_AUTO_ALTERNATE}
-bspc config auto_cancel           		${BSPWM_AUTO_CANCEL}
+bspc config focused_border_color              "#505062"
+bspc config active_border_color               "#33333e"
+bspc config normal_border_color               "#393946"
 
-bspc config focused_border_color  		"${BSPWM_COLORS_FOCUSED_BORDER}"
-bspc config active_border_color   		"${BSPWM_COLORS_ACTIVE_BORDER}"
-bspc config normal_border_color   		"${BSPWM_COLORS_NORMAL_BORDER}"
-bspc config normal_locked_border_color 		"${BSPWM_COLORS_NORMAL_LOCKED_BORDER}"
-bspc config focused_sticky_border_color		"${BSPWM_COLORS_FOCUSED_STICKY_BORDER}"
-bspc config active_sticky_border_color 		"${BSPWM_COLORS_ACTIVE_STICKY_BORDER}"
-bspc config normal_sticky_border_color 		"${BSPWM_COLORS_NORMAL_STICKY_BORDER}"
-bspc config focused_private_border_color 	"${BSPWM_COLORS_FOCUSED_PRIVATE_BORDER}"
-bspc config active_private_border_color 	"${BSPWM_COLORS_ACTIVE_PRIVATE_BORDER}"
-bspc config normal_private_border_color 	"${BSPWM_COLORS_NORMAL_PRIVATE_BORDER}"
-bspc config urgent_border_color 		"${BSPWM_COLORS_URGENT_BORDER}"
+bspc config focused_sticky_border_color       "#505062"
+bspc config active_sticky_border_color        "#33333e"
+bspc config normal_sticky_border_color        "#393946"
 
-bspc rule -a bar state=locked follow=on sticky=on
+bspc config focused_private_border_color      "#505062"
+bspc config active_private_border_color       "#33333e"
+bspc config normal_private_border_color       "#393946"
 
+bspc config urgent_border_color               "#ffffff"
+
+
+bspc config pointer_modifier                  mod4
+bspc config pointer_action1                   move
+bspc config pointer_action2                   resize_side
+bspc config pointer_action3                   resize_corner
+
+# bspc rules
+bspc rule -a polybar state=locked follow=on sticky=on
+bspc rule -a feh floating=on manage=off
+bspc rule -a Spotify pseudo_tiled=on
+bspc rule -a chromium private=on 
+bspc rule -a firefox private=on
+
+
+# multihead support
 m=1
 monitors=$(bspc query -M)
 num_monitors=$( echo ${monitors} | wc -l )

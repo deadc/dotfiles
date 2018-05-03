@@ -1,0 +1,15 @@
+bspwm
+dmenu-ee-git
+sxhkd
+termite
+gohufont
+ttf-material-design-icons
+ttf-unifont
+compton
+imagemagick
+xorg-xrandr
+i3lock
+stow
+zsh
+bc
+jq

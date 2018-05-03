@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+FEH=${HOME}/.fehbg
+
+if [ -e ${FEH} ] ; then
+  eval ${FEH}
+fi

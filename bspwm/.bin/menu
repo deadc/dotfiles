@@ -1,4 +1,0 @@
-#/bin/sh
-
-source $HOME/.bin/colr
-dmenu -fn 'lemon-10' -sf "#$bg" -sb "#$fg" -p "Run >"

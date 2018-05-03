@@ -1,0 +1,94 @@
+# vim:ft=dosini
+#
+# Termite configuration
+#
+
+[options]
+resize_grip = false
+scroll_on_output = false
+scroll_on_keystroke = true
+audible_bell = false
+visible_bell = true
+mouse_autohide = false
+allow_bold = true
+dynamic_title = true
+urgent_on_bell = true
+clickable_url = true
+scrollback_lines = 10000
+search_wrap = true
+
+# "system", "on" or "off"
+cursor_blink = on
+
+# "block", "underline" or "ibeam"
+cursor_shape = block
+
+# emit escape sequences for other keys modified by Control
+#modify_other_keys = false
+
+;font = Terminus 8
+font = Dina,11
+;font = tewi 9
+;font = Hack 10
+font = GohuFont,Regular,8
+;font = Literation Mono 11
+;font = CamingoCode,Bold 11
+;font = Fantasque Sans Mono,Regular 11
+;font = DejaVu Sans Mono for Powerline, 10
+;font = Droid Sans Mono for Powerline 10
+;font = Source Code Pro for Powerline, 10
+;font = Inconsolata for Powerline,Regular 10
+;font = termsyn, 9
+;font = Terminess Powerline, 10
+;font = Ohsnap, Regular, 9
+font = Fira Mono, 8
+;font = Roboto Mono for Powerline, 8
+;font = Literation Mono Powerline, 8
+;font = Literation Mono Powerline, 9
+;font = envypn, regular, 10
+;font = Inconsolata for Powerline, Regular 10
+;font = Roboto Mono for Powerline, 8
+;font = termsyn, 9
+;font = envypn, regular, 10
+
+[colors]
+
+# do not edit anything below this line since it will
+# get overridden when changing theme
+
+# themer::placeholder
+# -- start of script output --
+
+;foreground      = #d8d8d8
+;foreground_bold = #d8d8d8
+foreground      = #dfdfdf
+foreground_bold = #dfdfdf
+;background      = rgba(24, 24, 24, .98)
+background      = rgba(51, 51, 62, .98)
+
+cursor          = #d8d8d8
+
+color0  = #181818
+color1  = #ab4642
+color2  = #a1b56c
+color3  = #f7ca88
+color4  = #7cafc2
+color5  = #ba8baf
+color6  = #86c1b9
+color7  = #d8d8d8
+color8  = #585858
+color9  = #ab4642
+color10 = #a1b56c
+color11 = #f7ca88
+color12 = #7cafc2
+color13 = #ba8baf
+color14 = #86c1b9
+color15 = #f8f8f8
+
+color16 = #dc9656
+color17 = #a16946
+color18 = #282828
+color19 = #383838
+color20 = #b8b8b8
+color21 = #e8e8e8
+# -- end of script output --

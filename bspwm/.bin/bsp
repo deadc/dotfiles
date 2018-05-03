@@ -1,5 +1,4 @@
 #!/bin/sh
 
-#while true ; do
-	bspwm
-#done
+bspwm
+

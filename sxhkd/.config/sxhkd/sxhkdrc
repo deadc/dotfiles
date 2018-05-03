@@ -1,4 +1,3 @@
-#!/bin/bash
 super + alt + {_,shift + }Escape
   {bspc wm -d > "$BSPWM_STATE" && bspc quit, \
    bspc quit 1}
@@ -9,102 +8,47 @@ super + {_,shift} + c
 super + {t, s, f, p}
   bspc node -t {tiled, floating, fullscreen, pseudo_tiled}
 
-super + shift + p
+super + shift + s
   bspc node -g sticky
-
-alt + space
-  spawn
-
-XF86AudioPlay
-  mpc -q toggle
-
-  XF86AudioStop
-  mpc stop
-
-XF86Audio{Prev,Next}
-  mpc -q {prev,next}
-
-super + {_,shift} + r
-  bspc node @/ -R {90,270}
 
 super + {_,shift} + q
   bspc node -c
 
-super + m
-  bspc node -s biggest
-
 super + {grave, Tab}
   bspc {node,desktop} -f last
 
-super + {_,shift} + Tab
-  bspc node -f {prev, next}
-
-super + {Left,Down,Up,Right}
-  bspc node -v {-20 0,0 20,0 -20,20 0}
-
 super + Return
-  urxvtc
-
-super + {h, j, k, l}
-  bspc node -f {west, south, north, east}
-
-~button1
-  bspc pointer -g focus && pkill dmenu
-
-super + button{1-3}
-  bspc pointer -g {move,resize_side,resize_corner}
+  termite
 
 super + {space, o}
   run
 
-super + {b,e}
+super + b
   bspc node @/ -{B,E}
-
-super + ctrl + {h,j,k,l}
-  bspc node -p {west,south,north,east}
 
 super + ctrl + {1-9}
   bspc node -o 0.{1-9}
 
-ctrl + super + space
+super + ctrl + space
   bspc node -p cancel
-
-super + shift + {h, l}
-  bspc node -m {prev, next}; bspc monitor -f {prev, next}
 
 super + alt + {h, j, k, l}
   bspc node {@west -r -25,@south -r +25,@north -r -25,@east -r +25}
 
-super + shift + alt + {h, j, k, l}
-  bspc node {@east -r -25,@north -r +25,@south -r -25,@west -r +25}
-
 super + r
-  bspc node -R 90
+  bspc node @focused:/ -R 90
 
-super + {w, e}
-  bspc window -r {west 90, south 90}
+super + alt + r
+  bspc node @focused:/ -C forward
 
-alt + {minus, equal}
+super + {minus, equal}
   padding {+, -}
 
 super + {_,shift + }{1-9,0}
   bspc {desktop -f,node -d} '^{1-9,10}'
 
-super + alt + p
+super + {alt,shift} + {l,p}
   lock
 
 super + Escape
-  pkill -USR1 -x sxhkd && xrdb -load ~/.Xresources
-
-XF86Audio{Prev,Next}
-     mpc -q {prev,next}
-
-
-XF86AudioPlay
-     mpc -q toggle
-
-XF86Audio{LowerVolume,RaiseVolume}
-    amixer -q sset Master 3%{-,+}
-
-XF86AudioMute
-    amixer -q set Master toggle
+  pkill -USR1 -x sxhkd

@@ -1,5 +1,0 @@
-#!/bin/sh
-
-while :; do
-	bspc wm -g | wm > /tmp/barfifo
-done
