@@ -7,7 +7,7 @@ IFS='\n'
 
 M_OFFSET=40
 
-for MONITOR in $( xrandr --query | awk -F '[ x+]' '/\<connected\>/{print $1,$3,$4}' ) ; do
+for MONITOR in $( xrandr --query | sed 's/primary //g' | awk -F '[ x+]' '/\<connected\>/{print $1,$3,$4}' ) ; do
 	export M_NAME=$(echo ${MONITOR} | cut -d ' ' -f 1 ) 
 	export M_OFF_X=20
 	export M_OFF_Y=20
