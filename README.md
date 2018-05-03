@@ -6,4 +6,4 @@
 
 # Config Install
 
-    cd .dot && stow bspwm compton gtk polybar sxhkd termite zsh
+    cd .dot && stow bspwm compton gtk polybar sxhkd termite zsh vim
