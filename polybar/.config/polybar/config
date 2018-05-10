@@ -145,7 +145,7 @@ label                         = %date% %time%
 type                          = internal/volume
 
 master-soundcard	            = default
-master-mixer		              = PCM
+master-mixer		              = "${env:MASTER_MIXER:PCM}"
 
 
 format-volume                 = <ramp-volume> <label-volume>

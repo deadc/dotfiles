@@ -11,5 +11,8 @@ for MONITOR in $( xrandr --query | sed 's/primary //g' | awk -F '[ x+]' '/\<conn
 	export M_OFF_Y=20
 	export M_HEIGHT=20
 	export M_WIDTH=$(echo $( echo ${MONITOR} | cut -d ':' -f 2 ) - ${M_OFFSET} | bc )
+  if [ -f ~/.config/polybar/.env ]  ; then
+    source ~/.config/polybar/.env
+  fi
 	polybar -r -q top &
 done
