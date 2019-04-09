@@ -1,5 +1,7 @@
 # add $HOME/.bin to $PATH
-export PATH=$HOME/.bin:$HOME/.gem/ruby/2.3.0/bin:$HOME/.rbenv/bin:$PATH
+export PATH=$HOME/.bin:$PATH
+
+grml_theme_add_token k8s-context -f k8s_context_func '%F{magenta}' '%f '
 
 zstyle ':vcs_info:*' actionformats "(%b|%a) " "zsh: %r"
 zstyle ':vcs_info:*' formats       "%{$fg[cyan]%}(%{$reset_color%}%b%{$fg[cyan]%})%{$reset_color%} "    "zsh: %r"
@@ -18,7 +20,8 @@ zstyle ':prompt:grml:*:items:path' pre '%F{yellow}'
 
 zstyle ':prompt:grml:*:items:percent' token '%% %F{reset_color}'
 
-zstyle ':prompt:grml:left:setup' items host at user path vcs percent
+
+zstyle ':prompt:grml:left:setup' items host at user path vcs k8s-context percent 
 zstyle ':prompt:grml:right:setup' items sad-smiley
 
 alias ls='ls --color=auto'
@@ -56,12 +59,25 @@ ssh-agent () {
 
 ssh-agent
 
+k8s_context_func () {
+  if [ -e ${HOME}/.kube/config ] ; then
+    K8S_CONTEXT=$( cat ${HOME}/.kube/config | grep current-context | cut -d ' ' -f 2 )
+    REPLY=${K8S_CONTEXT+${K8S_CONTEXT:t}}
+  fi
+}
+
 if [ -d $HOME/.rbenv ] ; then
   eval "$(rbenv init -)"
+fi
+
+if [ -e /usr/local/bin/kubectl ] ; then
+  source <(/usr/local/bin/kubectl completion zsh)
 fi
 
 # disable annoying pc speaker
 xset -b
 
+
 # Automatic startx
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+
