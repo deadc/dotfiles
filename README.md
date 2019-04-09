@@ -2,7 +2,7 @@
 
 
     git clone https://github.com/deadc/dotfiles.git .dot
-    cd .dot && sudo aurman --needed --noconfirm -S $( cat requirements.txt )
+    cd .dot && sudo yay --needed --noconfirm -S $( cat requirements.txt )
 
 # Config Install
 
