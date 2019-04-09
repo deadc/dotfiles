@@ -7,6 +7,9 @@ ttf-fira-mono
 dina-font
 ttf-material-design-icons
 ttf-unifont
+polybar
+xorg-xinit
+xorg
 compton
 imagemagick
 xorg-xrandr
