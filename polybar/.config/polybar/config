@@ -28,7 +28,7 @@ module-margin-right           = 1
 
 font-0                        = gohu gohufont:pixelsize=8;1
 font-1                        = materialicons:size=8;2
-font-2                        = unifont:size=12;1
+font-2                        = unifont:size=12;2
 
 modules-left                  = bspwm
 modules-center                = xwindow
