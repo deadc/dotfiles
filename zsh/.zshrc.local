@@ -1,52 +1,45 @@
-# add $HOME/.bin to $PATH
-export PATH=$HOME/.bin:$PATH
+## customize prompt
+zstyle ':prompt:grml:left:setup' items rc path kubectl-context vcs percent
+zstyle ':prompt:grml:right:setup' use-rprompt false
 
-grml_theme_add_token k8s-context -f k8s_context_func '%F{magenta}' '%f '
+## add kubectl-context grml token
+grml_theme_add_token kubectl-context -f kubectl_context '%F{magenta}(%F{blue}' '%F{magenta})%f '
 
-zstyle ':vcs_info:*' actionformats "(%b|%a) " "zsh: %r"
-zstyle ':vcs_info:*' formats       "%{$fg[cyan]%}(%{$reset_color%}%b%{$fg[cyan]%})%{$reset_color%} "    "zsh: %r"
+## customize vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' unstagedstr '!'
+zstyle ':vcs_info:*' stagedstr '+'
+zstyle ':vcs_info:git*' formats "%F{magenta}(%F{blue}%b%F{yellow}%m%u%c%F{magenta})%f " "zsh: %r"
 
-zstyle ':prompt:grml:*:items:at' token '//'
-zstyle ':prompt:grml:*:items:at' pre '%F{white}'
+## customize path/change-root
+zstyle ':prompt:grml:*:items:path' pre '%F{cyan}'
+zstyle ':prompt:grml:*:items:path' token ' %35<..<%~%<< '
+zstyle ':prompt:grml:*:items:path' post '%f'
 
-zstyle ':prompt:grml:*:items:host' token '%m'
-zstyle ':prompt:grml:*:items:host' pre '%F{cyan}'
+## add $HOME/.bin to $PATH (remove this)
+export PATH=$HOME/.bin:$HOME:$PATH
 
-zstyle ':prompt:grml:*:items:user' token '%n'
-zstyle ':prompt:grml:*:items:user' pre '%F{blue}'
+## Aliases
+[[ -f .zshrc.aliases ]] && source .zshrc.aliases
 
-zstyle ':prompt:grml:*:items:path' token ' %40<..<%~%<< '
-zstyle ':prompt:grml:*:items:path' pre '%F{yellow}'
+## kubectl functions
+function kubectl_context () {
+  NAMESPACE=$(kubectl config view --minify --output 'jsonpath={..namespace}')
+  CONTEXT=$(kubectl config view --minify --output 'jsonpath={..current-context}')
+  REPLY="${CONTEXT}|${NAMESPACE}"
+}
 
-zstyle ':prompt:grml:*:items:percent' token '%% %F{reset_color}'
+function nctx () {
+  kubectl config set-context --current --namespace=$1
+}
 
+function kctx () {
+  kubectl config use-context $1
+}
 
-zstyle ':prompt:grml:left:setup' items host at user path vcs k8s-context percent 
-zstyle ':prompt:grml:right:setup' items sad-smiley
-
-alias ls='ls --color=auto'
-alias dir='dir --color=auto'
-alias vdir='vdir --color=auto'
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-alias pacman='sudo pacman'
-alias pcs='pacman -Ss'
-alias pcsu='pacman -Syu'
-alias ssh='TERM=rxvt ssh -X'
-alias 10cpu='ps -auxf | sort -nr -k 3 | head -10'
-alias 10mem='ps -auxf | sort -nr -k 4 | head -10'
-alias wpid="xargs -I {} bash -c 'ps -p {} -o comm=' <<<"
-alias nstat='netstat -tulpn'
-alias v="vim"
-alias vi="vim"
-alias sv="sudo vim"
-alias rdesktop='rdesktop -g 1360x740'
-
-ssh-agent () {
+## Extra functions
+function ssh-agent () {
     [[ -S $SSH_AUTH_SOCK ]] && return
     if [[ -f ~/.agent.$HOST ]] ; then # existing agent data, try it and break if it works
         eval `cat ~/.agent.$HOST`
@@ -57,27 +50,17 @@ ssh-agent () {
     eval `cat ~/.agent.$HOST`
 }
 
-ssh-agent
+function ssh_aws {
+  SSH_BIN=$(command which ssh)
+  AWS_IP=$( echo $@ | grep -oE 'ip-.*.ec2.internal' )
 
-k8s_context_func () {
-  if [ -e ${HOME}/.kube/config ] ; then
-    K8S_CONTEXT=$( cat ${HOME}/.kube/config | grep current-context | cut -d ' ' -f 2 )
-    REPLY=${K8S_CONTEXT+${K8S_CONTEXT:t}}
+  if [ ! -z ${AWS_IP} ] ; then
+    REAL_IP=$( echo ${AWS_IP%%.*} | sed -e 's/ip-//' -e 's/-/./g' )
+    ${SSH_BIN} $( echo $@ | sed -e "s/${AWS_IP}/${REAL_IP}/g" )
+  else
+    ${SSH_BIN} $@
   fi
 }
 
-if [ -d $HOME/.rbenv ] ; then
-  eval "$(rbenv init -)"
-fi
-
-if [ -e /usr/local/bin/kubectl ] ; then
-  source <(/usr/local/bin/kubectl completion zsh)
-fi
-
-# disable annoying pc speaker
-xset -b
-
-
-# Automatic startx
-[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
-
+## functions at new sessions
+ssh-agent

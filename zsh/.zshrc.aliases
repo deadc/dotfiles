@@ -1,0 +1,21 @@
+alias ls='ls --color=auto'
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias pacman='sudo pacman'
+alias pcs='pacman -Ss'
+alias pcsu='pacman -Syu'
+alias 10cpu='ps -auxf | sort -nr -k 3 | head -10'
+alias 10mem='ps -auxf | sort -nr -k 4 | head -10'
+alias wpid="xargs -I {} bash -c 'ps -p {} -o comm=' <<<"
+alias nstat='netstat -tulpn'
+alias v="vim"
+alias vi="vim"
+alias sv="sudo vim"
+alias rdesktop='rdesktop -g 1360x740'
+alias ssh=ssh_aws
