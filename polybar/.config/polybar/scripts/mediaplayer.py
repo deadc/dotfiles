@@ -1,6 +1,6 @@
 #!/usr/bin/python
-import dbus
 
+import dbus
 
 def main():
     try:
@@ -12,12 +12,12 @@ def main():
         metadata = spotify_properties.Get("org.mpris.MediaPlayer2.Player",
                                           "Metadata")
 
-        print("{} - {}".format(
+        print("{} | {} - {}".format(
+            metadata["xesam:album"],
             metadata["xesam:artist"][0],
             metadata["xesam:title"]))
     except:
         print("")
-
 
 if __name__ == "__main__":
     main()

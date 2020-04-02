@@ -1,198 +1,161 @@
 [colors]
-background                    = #33333E
-foreground                    = #DFDFDF
+transparent                   = #00000000
+background                    = #0F1C32
+foreground                    = #778892
+alert                         = #DAD9D4
 
-alert                         = #BD2C40
-border                        = #393946
+[settings]
+screenchange-reload           = true
+pseudo-transparency           = true
 
-[bar/top]
-monitor                       = ${env:M_NAME:DP-2}
-height                        = ${env:M_HEIGHT:20}
-width                         = ${env:M_WIDTH:100%}
-offset-x                      = ${env:M_OFF_X:0}
-offset-y                      = ${env:M_OFF_Y:0}
+[global/wm]
+margin-top                    = 0
+margin-bottom                 = 0
+
+[bar/base]
+monitor                       = ${env:MONITOR}
+locale                        = pt_BR.UTF-8
+dpi                           = 96
+
+## BOTTOM CENTER
+[bar/bottom-center]
+inherit                       = bar/base
+height                        = 20
+width                         = 10%
+offset-x                      = 45%
+offset-y                      = 15
 
 fixed-center                  = true
+bottom                        = true
 
-background                    = ${colors.background}
+modules-center                = bspwm
+
+background                    = ${colors.transparent}
 foreground                    = ${colors.foreground}
 
-border-size                   = 1
-border-color                  = ${colors.border}
+font-0                        = Gohu GohuFont:style=Regular:size=8;2
+font-1                        = Material Icons:style=Regular:size=8;2
 
-padding-left                  = 0
-padding-right                 = 1
+## TOP RIGHT
+[bar/top-right]
+inherit                       = bar/base
+height                        = 20
+width                         = 150
+offset-x                      = 100%:-170
+offset-y                      = 15
 
-module-margin-left            = 1
-module-margin-right           = 1
+fixed-center                  = true
+modules-right                 = date
 
-font-0                        = gohu gohufont:pixelsize=8;1
-font-1                        = materialicons:size=8;2
-font-2                        = unifont:size=12;2
+background                    = ${colors.transparent}
+foreground                    = ${colors.background}
 
-modules-left                  = bspwm
-modules-center                = xwindow
-modules-right                 = music volume filesystem cpu memory temperature battery date powermenu
+font-0                        = Gohu GohuFont:style=Regular:size=8;2
+font-1                        = Material Icons:style=Regular:size=8;2
 
-tray-position                 = right
-tray-padding                  = 1
-tray-maxsize                  = 12
+## TOP LEFT
+[bar/top-left]
+#monitor                       = ${env:MONITOR}
+height                        = 20
+width                         = 150
+offset-x                      = 20
+offset-y                      = 15
 
-wm-restack                    = bspwm
-override-redirect             = true
+fixed-center                  = true
+modules-left                  = date
 
-cursor-click                  = pointer
-cursor-scroll                 = ns-resize
+background                    = ${colors.transparent}
+foreground                    = ${colors.background}
 
-[module/xwindow]
-type                          = internal/xwindow
-label                         = %title:0:30:...%
+font-0                        = Gohu GohuFont:style=Regular:size=8;2
+font-1                        = Material Icons:style=Regular:size=8;2
 
-[module/filesystem]
-type                          = internal/fs
-interval                      = 25
+## BOTTOM LEFT
+[bar/bottom-left]
+inherit                       = bar/base
+height                        = 20
+width                         = 600
+offset-x                      = 20
+offset-y                      = 15
 
-mount-0                       = /
+fixed-center                  = true
+modules-left                  = pulseaudio music
+bottom                        = true
 
-label-mounted                 = " %percentage_used%%"
-label-unmounted               = %mountpoint% not mounted
+background                    = ${colors.transparent}
+foreground                    = ${colors.foreground}
 
+font-0                        = Gohu GohuFont:style=Regular:size=8;1
+font-1                        = Material Icons:style=Regular:size=12;2
+
+## BOTTOM RIGHT
+[bar/bottom-right]
+inherit                       = bar/base
+height                        = 20
+width                         = 150
+offset-x                      = 100%:-170
+offset-y                      = 15
+
+fixed-center                  = true
+modules-right                 = powermenu
+bottom                        = true
+
+background                    = ${colors.transparent}
+foreground                    = ${colors.foreground}
+
+font-0                        = Gohu GohuFont:style=Regular:size=8;1
+font-1                        = Material Icons:style=Regular:size=12;2
+
+## MODULES
 [module/bspwm]
 type                          = internal/bspwm
 
-label-focused                 = ■
+label-focused                 = 
 label-focused-padding         = 1
+label-focused-foreground      = ${colors.foreground}
 
-label-occupied                = ▣
+label-occupied                = 
 label-occupied-padding        = 1
+label-occupied-foreground     = ${colors.foreground}
 
 label-urgent                  = %index%!
 label-urgent-background       = ${colors.alert}
 label-urgent-padding          = 1
 
-label-empty                   = □
+label-empty                   = 
 label-empty-padding           = 1
-
-[module/xbacklight]
-type                          = internal/xbacklight
-
-format                        = <label> <bar>
-label                         = BL
-
-bar-width                     = 10
-bar-indicator                 = |
-bar-indicator-font            = 2
-bar-fill                      = ─
-bar-fill-font                 = 2
-bar-empty                     = ─
-bar-empty-font                = 2
-
-[module/backlight-acpi]
-inherit                       = module/xbacklight
-type                          = internal/backlight
-card                          = intel_backlight
-
-[module/cpu]
-type                          = internal/cpu
-interval                      = 2
-format-prefix                 = " "
-label                         = %percentage:2%%
-
-[module/memory]
-type                          = internal/memory
-interval                      = 2
-format-prefix                 = " "
-label                         = %percentage_used:2%%
-
-[module/wlan]
-type                          = internal/network
-interface                     = wlp02
-interval                      = 3.0
-
-format-connected              = <ramp-signal> <label-connected>
-label-connected               = %essid%
-
-format-disconnected           = <label-disconnected>
-format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected            = ""
-
-ramp-signal-0                 = ""
-ramp-signal-1                 = ""
-ramp-signal-2                 = ""
-ramp-signal-3                 = ""
-
-[module/eth]
-type                          = internal/network
-interface                     = enp4s0
-interval                      = 3.0
-
-format-connected-prefix       = ""
-label-connected               = %local_ip%
-
-format-disconnected           = <label-disconnected>
-format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected            = %ifname% disconnected
+label-empty-foreground        = ${colors.foreground}
 
 [module/date]
 type                          = internal/date
 interval                      = 5
-date                          = " %a %b %d"
+date                          = "%a %b %d"
 time                          = %H:%M
+label                         = %date% | %time%
 
-label                         = %date% %time%
+[module/pulseaudio]
+type                          = internal/pulseaudio
 
-[module/volume]
-type                          = internal/volume
+use-ui-max                    = false
+interval                      = 5
 
-master-soundcard	            = default
-master-mixer		              = "${env:MASTER_MIXER:PCM}"
+format-volume                 = <ramp-volume>
+format-muted                  = <label-muted>
 
-
-format-volume                 = <ramp-volume> <label-volume>
-label-volume                  = %percentage%
-
+label-volume                  = %percentage%%
 label-muted                   = ""
 
 ramp-volume-0                 = ""
 ramp-volume-1                 = ""
 ramp-volume-2                 = ""
 
-mapped                        = true
-
-[module/battery]
-type                          = internal/battery
-battery                       = BAT0
-adapter                       = ADP1
-full-at                       = 98
-
-format-charging               = <label-charging>
-format-discharging            = <label-discharging>
-
-label-charging                = " %percentage%%"
-label-discharging             = " %percentage%%"
-
-[module/temperature]
-type                          = internal/temperature
-thermal-zone                  = 2
-warn-temperature              = 60
-
-format                        = <ramp> <label>
-format-warn                   = <ramp> <label-warn>
-
-label                         = %temperature%
-label-warn                    = %temperature%
-
-ramp-0                        = ""
-ramp-1                        = ""
-ramp-2                        = ""
-
 [module/music]
 type                          = custom/script
-exec                          = $HOME/.config/polybar/mediaplayer.py
+exec                          = $HOME/.config/polybar/scripts/mediaplayer.py
 exec-if                       = pgrep -x spotify
 interval                      = 5
 
-label                         = " %output:0:35:..%"
+label                         = " %output:0:120:..%"
 format-padding                = 1
 
 click-left                    = dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
@@ -203,7 +166,7 @@ click-right                   = dbus-send --print-reply --dest=org.mpris.MediaPl
 type                          = custom/menu
 expand-right                  = true
 
-format-spacing                = 1
+format-spacing                = 2
 
 label-open                    = ""
 label-close                   = ""
@@ -213,10 +176,3 @@ menu-0-0                      = ""
 menu-0-0-exec                 = sudo shutdown -r now
 menu-0-1                      = ""
 menu-0-1-exec                 = sudo shutdown -h now
-
-[settings]
-screenchange-reload           = true
-
-[global/wm]
-margin-top                    = 5
-margin-bottom                 = 5
