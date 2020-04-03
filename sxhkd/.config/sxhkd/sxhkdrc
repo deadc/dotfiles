@@ -21,7 +21,7 @@ super + Return
   termite
 
 super + {space, o}
-  run
+  wm.start_run
 
 super + b
   bspc node @/ -{B,E}
@@ -42,13 +42,13 @@ super + alt + r
   bspc node @focused:/ -C forward
 
 super + {minus, equal}
-  padding {+, -}
+  wm.bspwm_padding {+, -}
 
 super + {_,shift + }{1-9,0}
   bspc {desktop -f,node -d} '^{1-9,10}'
 
 super + {alt,shift} + {l,p}
-  lock
+  wm.bspwm_lockscreen
 
 super + Escape
   pkill -USR1 -x sxhkd
