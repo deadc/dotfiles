@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+# deps: jq, bspwm
+
+DMENU_COLORS_FOREGROUND="#808080"
+DMENU_COLORS_BACKGROUND="#33333e"
+
+DMENU_FONT="-gohu-gohufont-medium-r-normal--11-80-100-100-c-60-iso8859-1"
+DMENU_PRE=">>"
+
+
+LINESIZE=20
+GAPSIZE=21
+
+function _monitSize
+{
+	if [ -z $1 ]; then MONITORS=$(bspc query -M); else MONITORS=$1; fi
+	for MONITOR in ${MONITORS}; do
+		VALUES=$(bspc query -m $MONITOR -T | jq .rectangle)
+		X=$(echo $VALUES | jq .x)
+		Y=$(echo $VALUES | jq .y)
+		WIDTH=$(echo $VALUES | jq .width)
+		HEIGHT=$(echo $VALUES | jq .height)
+
+		WIDTH=$(echo "${WIDTH}-(${GAPSIZE}*2)" | bc)
+		HEIGHT=${LINESIZE}
+
+		if [ ${X} -gt 0 ] ; then
+			X=$(echo "${X}+(${GAPSIZE})" | bc)
+			Y=$(echo "${Y}+${GAPSIZE}" | bc )
+		else
+			X=$(echo "${X}+${GAPSIZE}" | bc )
+			Y=$(echo "${Y}+${GAPSIZE}" | bc )
+		fi
+
+		echo ${WIDTH}x${HEIGHT}+${X}+${Y}
+
+	done
+}
+
+_monitSize $(bspc query -M -d) > /dev/null
+
+dmenu_run 				 \
+	-fn "${DMENU_FONT}" 		 \
+	-nf "${DMENU_COLORS_FOREGROUND}" \
+	-sf "${DMENU_COLORS_FOREGROUND}" \
+	-nb "${DMENU_COLORS_BACKGROUND}" \
+	-sb "${DMENU_COLORS_BACKGROUND}" \
+	-w ${WIDTH} -h ${HEIGHT} 	 \
+	-x ${Y} -y ${Y} 		 \
+	-l 0 -p "${DMENU_PRE}"

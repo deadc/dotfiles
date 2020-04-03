@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+pkill sxhkd
+sxhkd -c ~/.config/sxhkd/sxhkdrc &

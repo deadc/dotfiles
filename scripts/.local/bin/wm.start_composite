@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+pkill picom
+picom --xrender-sync-fence --respect-prop-shadow --config $HOME/.config/picom/picom.conf -b
