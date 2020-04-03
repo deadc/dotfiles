@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-for display in $( xrandr --query | grep -E '*connected' | awk '{print $1}' ) ; do
-  echo xrandr --auto --output $display
-done
-
-# fix cursor
-xsetroot -cursor_name left_ptr
