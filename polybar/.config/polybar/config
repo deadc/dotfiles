@@ -74,7 +74,7 @@ font-1                        = Material Icons:style=Regular:size=8;2
 [bar/bottom-left]
 inherit                       = bar/base
 height                        = 20
-width                         = 600
+width                         = 950
 offset-x                      = 20
 offset-y                      = 15
 
