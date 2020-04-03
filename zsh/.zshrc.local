@@ -1,3 +1,6 @@
+## add $HOME/.local/bin to $PATH
+export PATH=$HOME/.local/bin:$PATH:.
+
 ## customize prompt
 zstyle ':prompt:grml:left:setup' items rc path kubectl-context vcs percent
 zstyle ':prompt:grml:right:setup' use-rprompt false
@@ -16,9 +19,6 @@ zstyle ':vcs_info:git*' formats "%F{magenta}(%F{blue}%b%F{yellow}%m%u%c%F{magent
 zstyle ':prompt:grml:*:items:path' pre '%F{cyan}'
 zstyle ':prompt:grml:*:items:path' token ' %35<..<%~%<< '
 zstyle ':prompt:grml:*:items:path' post '%f'
-
-## add $HOME/.bin to $PATH (remove this)
-export PATH=$HOME/.bin:$HOME:$PATH
 
 ## Aliases
 [[ -f .zshrc.aliases ]] && source .zshrc.aliases
