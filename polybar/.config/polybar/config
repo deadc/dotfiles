@@ -33,7 +33,7 @@ modules-center                = bspwm
 background                    = ${colors.transparent}
 foreground                    = ${colors.foreground}
 
-font-0                        = Gohu GohuFont:style=Regular:size=8;2
+font-0                        = Fira Mono:style=Regular:size=8;2
 font-1                        = Material Icons:style=Regular:size=8;2
 
 ## TOP RIGHT
@@ -50,7 +50,7 @@ modules-right                 = date
 background                    = ${colors.transparent}
 foreground                    = ${colors.background}
 
-font-0                        = Gohu GohuFont:style=Regular:size=8;2
+font-0                        = Fira Mono:style=Regular:size=8;2
 font-1                        = Material Icons:style=Regular:size=8;2
 
 ## TOP LEFT
@@ -67,7 +67,7 @@ modules-left                  = date
 background                    = ${colors.transparent}
 foreground                    = ${colors.background}
 
-font-0                        = Gohu GohuFont:style=Regular:size=8;2
+font-0                        = Fira Mono:style=Regular:size=8;2
 font-1                        = Material Icons:style=Regular:size=8;2
 
 ## BOTTOM LEFT
@@ -85,7 +85,7 @@ bottom                        = true
 background                    = ${colors.transparent}
 foreground                    = ${colors.foreground}
 
-font-0                        = Gohu GohuFont:style=Regular:size=8;1
+font-0                        = Fira Mono:style=Bold:size=8;1
 font-1                        = Material Icons:style=Regular:size=12;2
 
 ## BOTTOM RIGHT
@@ -103,7 +103,7 @@ bottom                        = true
 background                    = ${colors.transparent}
 foreground                    = ${colors.foreground}
 
-font-0                        = Gohu GohuFont:style=Regular:size=8;1
+font-0                        = Fira Mono:style=Regular:size=8;1
 font-1                        = Material Icons:style=Regular:size=12;2
 
 ## MODULES
@@ -129,8 +129,10 @@ label-empty-foreground        = ${colors.foreground}
 [module/date]
 type                          = internal/date
 interval                      = 5
-date                          = "%a %b %d"
+date                          = "%d %b"
+date-alt                      = "%A %d %b"
 time                          = %H:%M
+time-alt                      = %H:%M
 label                         = %date% | %time%
 
 [module/pulseaudio]
@@ -153,9 +155,9 @@ ramp-volume-2                 = ""
 type                          = custom/script
 exec                          = $HOME/.config/polybar/scripts/mediaplayer.py
 exec-if                       = pgrep -x spotify
-interval                      = 5
+interval                      = 1
 
-label                         = " %output:0:120:..%"
+label                         = "%{T2}%{T-} %output:0:120:..%"
 format-padding                = 1
 
 click-left                    = dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
