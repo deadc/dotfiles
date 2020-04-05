@@ -1,5 +1,5 @@
 ## add $HOME/.local/bin to $PATH
-export PATH=$HOME/.local/bin:$PATH:.
+export PATH=$HOME/.local/bin:$PATH
 
 ## customize prompt
 [[ $(command which kubectl 2>/dev/null) ]] && K_TOKEN=kubectl-context
