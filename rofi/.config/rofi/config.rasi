@@ -1,0 +1,38 @@
+configuration {
+	modi: 						"run";
+	font: 						"Fira Mono 8";
+	location: 				2;
+	padding: 					4;
+	yoffset: 					20;
+	xoffset: 					-620;
+	display-run: 			">>";
+	disable-history: 	true;
+}
+
+horibox {
+  orientation: 			horizontal;
+  children:   			[ prompt, entry, listview ];
+}
+
+listview {
+  layout:     			horizontal;
+  spacing:    			5px;
+  lines:      			3;
+}
+
+element {
+  highlight: 				bold;
+}
+
+window {
+  children:   			[ horibox ];
+}
+
+entry {
+  expand:     			false;
+  width:      			10em;
+}
+
+* {
+  background-color: transparent;
+}
