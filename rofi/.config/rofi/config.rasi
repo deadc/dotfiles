@@ -21,7 +21,7 @@ listview {
 }
 
 element {
-  highlight: 				bold;
+  highlight: 				none;
 }
 
 window {
