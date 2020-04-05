@@ -1,4 +1,12 @@
 #!/usr/bin/env bash
 
-pkill picom
-picom --xrender-sync-fence --respect-prop-shadow --config $HOME/.config/picom/picom.conf -b
+CPID=$(pgrep -x compton)
+CCMD="compton --config ${HOME}/.config/compton/compton.conf -b"
+
+if [ ! -z "${CPID}" ] ; then
+  kill -TERM ${CPID}
+  sleep 0.5
+  ${CCMD}
+else
+  ${CCMD}
+fi

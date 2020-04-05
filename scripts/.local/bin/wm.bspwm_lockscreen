@@ -1,8 +1,16 @@
 #!/usr/bin/env bash
 
-ss=/tmp/ss.png
-sleep 1
-scrot "$ss"
+SCREEN_FILE=/tmp/.lockscreen.png
 
-convert -scale 10% -scale 1000% "$ss" "$ss"
-i3lock -u -i "$ss"
+function _lockscreen () {
+  scrot $1
+  convert -scale 10% -scale 1000% "$1" "$1"
+  i3lock -u -i $1
+}
+
+if [ -e ${SCREEN_FILE} ] ; then
+  rm -f ${SCREEN_FILE}
+  _lockscreen ${SCREEN_FILE}
+else
+  _lockscreen ${SCREEN_FILE}
+fi

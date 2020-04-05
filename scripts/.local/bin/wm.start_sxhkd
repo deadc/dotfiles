@@ -1,4 +1,12 @@
 #!/usr/bin/env bash
 
-pkill sxhkd
-sxhkd -c ~/.config/sxhkd/sxhkdrc &
+CPID=$(pgrep -x sxhkd)
+CCMD="sxhkd"
+
+if [ ! -z "${CPID}" ] ; then
+  kill -TERM ${CPID}
+  sleep 0.5
+  ${CCMD} &
+else
+  ${CCMD} &
+fi
