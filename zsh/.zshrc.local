@@ -2,7 +2,9 @@
 export PATH=$HOME/.local/bin:$PATH:.
 
 ## customize prompt
-zstyle ':prompt:grml:left:setup' items rc path kubectl-context vcs percent
+[[ $(command which kubectl 2>/dev/null) ]] && K_TOKEN=kubectl-context
+
+zstyle ':prompt:grml:left:setup' items rc path ${K_TOKEN} vcs percent
 zstyle ':prompt:grml:right:setup' use-rprompt false
 
 ## add kubectl-context grml token
@@ -27,7 +29,7 @@ zstyle ':prompt:grml:*:items:path' post '%f'
 function kubectl_context () {
   NAMESPACE=$(kubectl config view --minify --output 'jsonpath={..namespace}')
   CONTEXT=$(kubectl config view --minify --output 'jsonpath={..current-context}')
-  REPLY="${CONTEXT}|${NAMESPACE}"
+  REPLY="${CONTEXT:-undefined}|${NAMESPACE:-undefined}"
 }
 
 function nctx () {
