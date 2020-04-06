@@ -7,6 +7,9 @@ alert                         = #DAD9D4
 [settings]
 screenchange-reload           = true
 pseudo-transparency           = true
+wm-restack                    = bspwm
+override-redirect             = true
+
 
 [global/wm]
 margin-top                    = 0
