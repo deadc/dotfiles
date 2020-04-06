@@ -79,7 +79,7 @@ offset-x                      = 20
 offset-y                      = 15
 
 fixed-center                  = true
-modules-left                  = pulseaudio music
+modules-left                  = pulseaudio-control music
 bottom                        = true
 
 background                    = ${colors.transparent}
@@ -135,22 +135,6 @@ time                          = %H:%M
 time-alt                      = %H:%M
 label                         = %date% | %time%
 
-[module/pulseaudio]
-type                          = internal/pulseaudio
-
-use-ui-max                    = false
-interval                      = 5
-
-format-volume                 = <ramp-volume>
-format-muted                  = <label-muted>
-
-label-volume                  = %percentage%%
-label-muted                   = ""
-
-ramp-volume-0                 = ""
-ramp-volume-1                 = ""
-ramp-volume-2                 = ""
-
 [module/music]
 type                          = custom/script
 exec                          = $HOME/.config/polybar/scripts/mediaplayer.py
@@ -158,7 +142,7 @@ exec-if                       = pgrep -x spotify
 interval                      = 1
 
 label                         = "%{T2}%{T-} %output:0:120:..%"
-format-padding                = 1
+format-padding                = 0
 
 click-left                    = dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
 click-middle                  = dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
@@ -178,3 +162,16 @@ menu-0-0                      = ""
 menu-0-0-exec                 = sudo shutdown -r now
 menu-0-1                      = ""
 menu-0-1-exec                 = sudo shutdown -h now
+
+[module/pulseaudio-control]
+type                          = custom/script
+tail                          = true
+label                         = %output%
+
+exec                          = $HOME/.config/polybar/scripts/pulseaudio-control listen
+click-right                   = exec pavucontrol &
+click-left                    = $HOME/.config/polybar/scripts/pulseaudio-control togmute
+click-middle                  = $HOME/.config/polybar/scripts/pulseaudio-control next-sink
+scroll-up                     = $HOME/.config/polybar/scripts/pulseaudio-control up
+scroll-down                   = $HOME/.config/polybar/scripts/pulseaudio-control down
+label-padding                 = 0
