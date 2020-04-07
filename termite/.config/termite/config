@@ -23,32 +23,41 @@ font                        = Fira Mono, 8
 # themer::placeholder
 # -- start of script output --
 
-foreground            = #778892
-foreground_bold       = #778892
-background            = #0F1C32
+foreground                  = #99B1BF
+foreground_bold             = #6F93A8
+background                  = #0F1C32
 
-cursor                = #778892
+cursor                      = #99B1BF
 
-color0                = #181818
-color1                = #ab4642
-color2                = #a1b56c
-color3                = #f7ca88
-color4                = #7cafc2
-color5                = #ba8baf
-color6                = #86c1b9
-color7                = #d8d8d8
-color8                = #585858
-color9                = #ab4642
-color10               = #a1b56c
-color11               = #f7ca88
-color12               = #7cafc2
-color13               = #ba8baf
-color14               = #86c1b9
-color15               = #f8f8f8
-color16               = #dc9656
-color17               = #a16946
-color18               = #282828
-color19               = #383838
-color20               = #b8b8b8
-color21               = #e8e8e8
+# black
+color0                      = #282A2E
+color8                      = #373B41
+
+# red
+color1                      = #A54242
+color9                      = #CC6666
+
+# green
+color2                      = #8C9440
+color10                     = #B5BD68
+
+# yellow
+color3                      = #DE935F
+color11                     = #F0C674
+
+# blue
+color4                      = #5F819D
+color12                     = #81A2BE
+
+# magenta
+color5                      = #85678F
+color13                     = #B294BB
+
+# cyan
+color6                      = #5E8D87
+color14                     = #8ABEB7
+
+# white
+color7                      = #707880
+color15                     = #C5C8C6
 # -- end of script output --
