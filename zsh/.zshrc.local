@@ -2,7 +2,7 @@
 export PATH=$HOME/.local/bin:$PATH
 
 ## customize prompt
-[[ $(command which kubectl 2>/dev/null) ]] && K_TOKEN=kubectl-context
+[[ -f $HOME/.kube/config ]] && K_TOKEN=kubectl-context
 
 zstyle ':prompt:grml:left:setup' items rc path ${K_TOKEN} vcs percent
 zstyle ':prompt:grml:right:setup' use-rprompt false
