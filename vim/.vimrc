@@ -22,11 +22,6 @@ set showbreak=¬\                                 " Wrapping character
 set showmatch                                    " show matching brackets
 syntax on                                        " enable syntax highlightning
 
-" Colors
-colorscheme onedark                              " set colorscheme
-hi Normal guibg=NONE ctermbg=NONE|               " transparency fix
-let g:onedark_termcolors=256                     " enable 256 colors support
-
 " Ruler
 set laststatus=0                                 " disable statusline
 set ruler rulerformat=%50(%=%<%F%m\ ›\ %{getfsize(@%)}B\ \›\ %l/%L:%v%)
