@@ -22,15 +22,16 @@ bspc config pointer_action3                   resize_corner
 
 bspc config external_rules_command            "$HOME/.config/bspwm/bspwm-rules"
 
-monitors=$(bspc query -M)
-num_monitors=$( echo "$monitors" | wc -l )
+# Configure multiple monitors
+
+monitors=( $( bspc query -M --names  ) )
 
 min=1
 mon=1
 
-for monitor in $( echo ${monitors} ) ; do
-  div=$((10 / $num_monitors))
-  bspc monitor ${monitor} -n $mon -d $(seq -f "$mon/%g" $min $(($div*$mon)))
-  min=$(($min+$div))
+for monitor in ${monitors[@]} ; do
+  div=$(( 10 / ${#monitors[@]} ))
+  bspc monitor ${monitor} -n ${monitor} -d $(seq -f "workspace/%g" $min $(($div*$mon)))
+  min=$(( $min + $div ))
   let mon++
 done
