@@ -27,8 +27,8 @@ zstyle ':prompt:grml:*:items:path' post '%f'
 
 ## kubectl functions
 function kubectl_context () {
-  NAMESPACE=$(kubectl config view --minify --output 'jsonpath={..namespace}')
-  CONTEXT=$(kubectl config view --minify --output 'jsonpath={..current-context}')
+  NAMESPACE=$(kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null)
+  CONTEXT=$(kubectl config view --minify --output 'jsonpath={..current-context}' 2>/dev/null)
   REPLY="${CONTEXT:-undefined}|${NAMESPACE:-undefined}"
 }
 
