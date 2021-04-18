@@ -1,8 +1,9 @@
 [colors]
 transparent                   = #00000000
-background                    = #0F1C32
-foreground                    = #778892
-alert                         = #DAD9D4
+primary                       = #0F1C32
+secondary                     = #778892
+alert                         = #FFFFFF
+
 
 [settings]
 screenchange-reload           = true
@@ -24,7 +25,7 @@ dpi                           = 96
 [bar/bottom-center]
 inherit                       = bar/base
 height                        = 20
-width                         = 200
+width                         = 250
 offset-x                      = 45%
 offset-y                      = 15
 
@@ -34,7 +35,7 @@ bottom                        = true
 modules-center                = bspwm
 
 background                    = ${colors.transparent}
-foreground                    = ${colors.foreground}
+foreground                    = ${colors.secondary}
 
 font-0                        = Fira Mono:style=Regular:size=8;2
 font-1                        = Material Icons:style=Regular:size=8;2
@@ -51,7 +52,7 @@ fixed-center                  = true
 modules-right                 = date
 
 background                    = ${colors.transparent}
-foreground                    = ${colors.background}
+foreground                    = ${colors.primary}
 
 font-0                        = Fira Mono:style=Regular:size=8;2
 font-1                        = Material Icons:style=Regular:size=8;2
@@ -69,7 +70,7 @@ modules-left                  = pulseaudio-control music
 bottom                        = true
 
 background                    = ${colors.transparent}
-foreground                    = ${colors.foreground}
+foreground                    = ${colors.secondary}
 
 font-0                        = Fira Mono:style=Bold:size=8;1
 font-1                        = Material Icons:style=Regular:size=12;2
@@ -87,7 +88,7 @@ modules-right                 = powermenu
 bottom                        = true
 
 background                    = ${colors.transparent}
-foreground                    = ${colors.foreground}
+foreground                    = ${colors.secondary}
 
 font-0                        = Fira Mono:style=Regular:size=8;1
 font-1                        = Material Icons:style=Regular:size=12;2
@@ -99,11 +100,11 @@ type                          = internal/bspwm
 
 label-focused                 = 
 label-focused-padding         = 1
-label-focused-foreground      = ${colors.foreground}
+label-focused-foreground      = ${colors.secondary}
 
 label-occupied                = 
 label-occupied-padding        = 1
-label-occupied-foreground     = ${colors.foreground}
+label-occupied-foreground     = ${colors.secondary}
 
 label-urgent                  = %index%!
 label-urgent-background       = ${colors.alert}
@@ -111,7 +112,7 @@ label-urgent-padding          = 1
 
 label-empty                   = 
 label-empty-padding           = 1
-label-empty-foreground        = ${colors.foreground}
+label-empty-foreground        = ${colors.secondary}
 
 [module/date]
 type                          = internal/date

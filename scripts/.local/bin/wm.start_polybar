@@ -1,16 +1,19 @@
 #!/usr/bin/env bash
 
+BARS=( "bottom-right" "bottom-left" "top-right" "bottom-center" )
+
+sleep 1
+
 CPID=$(pgrep -x polybar)
 
 if [ ! -z "${CPID}" ] ; then
   kill -TERM ${CPID//$'\n'/ }
 fi
 
-sleep 0.5
+for monit in $( polybar --list-monitors | cut -d ':' -f1 ); do
+    for bar in ${BARS[@]} ; do 
 
-for m in $( polybar --list-monitors | cut -d ':' -f1 ); do
-    MONITOR=$m polybar --reload bottom-center &
-    MONITOR=$m polybar --reload bottom-right &
-    MONITOR=$m polybar --reload bottom-left &
-    MONITOR=$m polybar --reload top-right &
+      MONITOR=${monit} polybar --reload ${bar} &
+
+  done
 done
