@@ -2,7 +2,6 @@ configuration {
 	modi: 						"run";
 	font: 						"Fira Mono 8";
 	location: 				1;
-	padding: 					4;
 	yoffset: 					20;
 	xoffset: 					25;
 	display-run: 			">>";
