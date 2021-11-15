@@ -68,3 +68,9 @@ cnoreabbrev w!! w !sudo tee > /dev/null %|       " write file with sudo
 " Netrw Settings
 let g:netrw_banner=0
 let g:netrw_browse_split=0
+
+" Cursor settings
+let &t_SI.="\e[1 q" "SI = INSERT mode
+let &t_SR.="\e[5 q" "SR = REPLACE mode
+let &t_EI.="\e[3 q" "EI = NORMAL mode (ELSE)
+

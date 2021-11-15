@@ -13,7 +13,8 @@ scrollback_lines            = -1
 search_wrap                 = true
 cursor_blink                = on
 cursor_shape                = underline
-font                        = Fira Mono, 8
+font                        = CaskaydiaCove Nerd Font 9
+
 
 [colors]
 
