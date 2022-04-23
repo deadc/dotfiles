@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-BARS=( "bottom-right" "bottom-left" "top-right" "bottom-center" )
+BARS=( "top-left" "top-right" )
 
 sleep 1
 
