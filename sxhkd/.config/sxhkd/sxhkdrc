@@ -18,7 +18,7 @@ super + {grave, Tab}
   bspc {node,desktop} -f last
 
 super + Return
-  termite
+  alacritty
 
 super + {space, o}
   wm.start_run
