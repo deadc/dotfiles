@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SCROT_PATH=${HOME}/.screenshots
+SCROT_PATH=${HOME}/photos/.screenshots
 
 if [ ! -d ${SCROT_PATH} ] ; then
   mkdir -p ${SCROT_PATH}
