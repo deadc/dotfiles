@@ -1,4 +1,5 @@
 ~/.config/polybar/.env
 .netrwhist
 .zcompdump
-
+scripts/.local/lib/
+scripts/.local/share

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SCROT_PATH=${HOME}/photos/.screenshots
+SCROT_PATH=/tmp
 
 if [ ! -d ${SCROT_PATH} ] ; then
   mkdir -p ${SCROT_PATH}
@@ -8,7 +8,7 @@ fi
 
 if [ "$1" = "cut" ] ; then
   sleep 0.2
-  scrot -s ${SCROT_PATH}/'%Y-%m-%d_%H%M%S-$wx$h_scrot.png' -e 'xclip -selection clipboard -target image/png -i $f'
+  scrot -s ${SCROT_PATH}/'screenshot-%Y-%m-%d_%H%M%S-$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
 else
-  scrot ${SCROT_PATH}/'%Y-%m-%d_%H%M%S-$wx$h_scrot.png'
+  scrot ${SCROT_PATH}/'screenshot-%Y-%m-%d_%H%M%S-$wx$h.png'
 fi
