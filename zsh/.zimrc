@@ -1,0 +1,22 @@
+zmodule romkatv/powerlevel10k
+
+zmodule zsh-users/zsh-autosuggestions
+zmodule zsh-users/zsh-completions
+zmodule zsh-users/zsh-syntax-highlighting
+zmodule zsh-users/zsh-history-substring-search
+
+zmodule zimfw/input
+zmodule zimfw/completion
+zmodule zimfw/environment
+
+zmodule zimfw/ssh
+zmodule zimfw/utility
+
+zmodule joke/zim-kubectl
+zmodule aloxaf/fzf-tab
+zmodule unixorn/fzf-zsh-plugin
+
+# tests
+zmodule unixorn/warhol.plugin.zsh
+zmodule djui/alias-tips
+
