@@ -31,3 +31,18 @@ source ${ZIM_HOME}/init.zsh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+
+# Load custom aliases.
+[[ ! -f ~/.zsh_aliases ]] || source ~/.zsh_aliases
+
+# Set some defaults.
+export VISUAL=vim
+export EDITOR=vim
+
+# Set Alt+Backspace
+WORDCHARS='*?_-.[]~=&;!#$%^){}<>'
+bindkey '^[^?' backward-kill-word
+
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
